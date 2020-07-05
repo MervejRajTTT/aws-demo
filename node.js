@@ -1,18 +1,13 @@
-// import express (after npm install express)
+var cors = require('cors')
 const express = require('express');
+const app = express()
+var port = 3500;
 
-// create new express app and save it as "app"
-const app = express();
+app.use(cors())
 
-// server configuration
-const PORT = 8080;
-
-// create a route for the app
 app.get('/', (req, res) => {
-  res.send('Hello World');
+  console.log("inside 3400")
+  return res.send('Welcome!')
 });
 
-// make the server listen to requests
-app.listen(PORT, () => {
-  console.log(`Server running at: http://localhost:${PORT}/`);
-});
+app.listen(port, () => console.log(`Example app listening on port ${port}!`))
