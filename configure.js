@@ -1,7 +1,7 @@
 const express = require('express');
 var app = express();
 var cors = require('cors');
-var port = 3500;
+var port = 3600;
 
 let object = {
     "instance_4": 'ec2-3-136-85-7.us-east-2.compute.amazonaws.com',
