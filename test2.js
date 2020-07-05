@@ -4,7 +4,6 @@ var httpProxy = require('http-proxy');
 var apiProxy = httpProxy.createProxyServer();
 var cors = require('cors')
 var serverOne = 'http://ec2-3-23-94-10.us-east-2.compute.amazonaws.com:3500/';
-var axios = require("axios");
  
 app.use(cors())
 
