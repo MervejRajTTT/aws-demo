@@ -3,8 +3,8 @@ var app = express();
 var cors = require('cors');
 
 let object = {
-    "instance_4": 'ec2-3-17-146-252.us-east-2.compute.amazonaws.com',
-    "instance_5": 'ec2-3-17-146-252.us-east-2.compute.amazonaws.com'
+    "instance_4": 'ec2-3-136-85-7.us-east-2.compute.amazonaws.com',
+    "instance_5": 'ec2-3-20-224-18.us-east-2.compute.amazonaws.com'
 };
 
 let freeInstance = ["instance_4", "instance_5"];
