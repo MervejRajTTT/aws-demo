@@ -4,7 +4,7 @@ var cors = require('cors');
 var port = 3600;
 
 let object = {
-    "instance_4": 'ec2-3-136-85-7.us-east-2.compute.amazonaws.com',
+    "instance_4": 'ec2-3-22-116-77.us-east-2.compute.amazonaws.com',
     "instance_5": 'ec2-3-20-224-18.us-east-2.compute.amazonaws.com'
 };
 
