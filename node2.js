@@ -6,7 +6,7 @@ var port = 3500;
 app.use(cors())
 
 app.get('/', (req, res) => {
-  return res.send('Welcome to server 1!')
+  return res.send('Welcome to server 2!')
 });
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
