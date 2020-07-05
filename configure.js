@@ -20,6 +20,7 @@ app.use(function(req, res, next) {
 app.get("/connect", function(req, res) {
     if(freeInstance.length > 0){
         let id = freeInstance.pop();
+        console.log("returning instance with id ", id);
         return res.send({ success : object[id] })
     }else{
         return res.send({ error : "no instance" });
