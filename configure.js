@@ -11,12 +11,9 @@ AWS.config.update({ region: 'us-east-2' });
 // Create EC2 service object
 var ec2 = new AWS.EC2({ apiVersion: '2016-11-15' });
 
-let object = {
-    "instance_4": 'ec2-3-22-116-77.us-east-2.compute.amazonaws.com',
-    "instance_5": 'ec2-3-20-224-18.us-east-2.compute.amazonaws.com'
-};
+let object = {};
 
-let freeInstance = ["instance_4", "instance_5"];
+let freeInstance = [];
 
 app.use(cors())
 
@@ -38,7 +35,6 @@ app.get("/connect", function (req, res) {
 
 app.get("/disconnect", function (req, res) {
     freeInstance.push(req.query.id)
-    console.log("instance is disconnect ", freeInstance);
     return res.send({ success: req.query.id })
 })
 
@@ -94,9 +90,18 @@ app.get("/getinstancedetails", function (req, res) {
     // Call EC2 to retrieve policy for selected bucket
     ec2.describeInstances(params, function (err, data) {
         if (err) {
-            console.log("Error", err.stack);
+            return res.send(JSON.stringify(err))
         } else {
-            console.log("Success", JSON.stringify(data));
+
+            return data["Reservations"].map((item,index)=>{
+                if(item["Instances"][0]["PublicDnsName"]){
+                    freeInstance.push(item["Instances"][0]["PublicDnsName"]);
+                    object[`instance_${index}`] = item["Instances"][0]["PublicDnsName"];
+                }
+                return res.send(JSON.stringify(object))
+            })
+
+            
         }
     });
 })
