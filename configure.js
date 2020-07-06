@@ -94,6 +94,7 @@ app.get("/getinstancedetails", function (req, res) {
         } else {
 
             return data["Reservations"].map((item,index)=>{
+                console.log("data is ", item["Instances"][0]["InstanceId"], item["Instances"][0]["PublicDnsName"])
                 if(item["Instances"][0]["PublicDnsName"]){
                     freeInstance.push(item["Instances"][0]["PublicDnsName"]);
                     object[`instance_${index}`] = item["Instances"][0]["PublicDnsName"];
