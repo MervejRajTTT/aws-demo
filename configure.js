@@ -93,16 +93,16 @@ app.get("/getinstancedetails", function (req, res) {
             return res.send(JSON.stringify(err))
         } else {
 
-            return data["Reservations"].map((item,index)=>{
-                console.log("data is ", item["Instances"][0]["InstanceId"], item["Instances"][0]["PublicDnsName"])
+            for(let i=0;i<data["Reservations"].length;i++){
+                let item = data["Reservations"][i];
                 if(item["Instances"][0]["PublicDnsName"]){
                     freeInstance.push(item["Instances"][0]["PublicDnsName"]);
-                    object[`instance_${index}`] = item["Instances"][0]["PublicDnsName"];
+                    object[`instance_${i}`] = item["Instances"][0]["PublicDnsName"];
                 }
-                return res.send(JSON.stringify(object))
-            })
+            }
 
-            
+            return res.send(JSON.stringify(object))
+
         }
     });
 })
